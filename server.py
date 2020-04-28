@@ -99,4 +99,4 @@ def forces():
   return json.dumps({"data":list(F)})
 
 if __name__ == "__main__":
-	app.run()
+	app.run(host='0.0.0.0')
