@@ -16,7 +16,7 @@ app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def root():
-    return render_template('index.html')
+    return json.dumps({"data": "Python"})
 
 @app.route('/gears/helical', methods=['POST'])
 def helicoidal_gears_module():
