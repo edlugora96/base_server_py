@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from joblib import load
+import random
 import numpy as np
 import pandas as pd
 import ast
@@ -16,7 +17,7 @@ app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def root():
-    return json.dumps({"data": "Python"})
+    return json.dumps({"data": "Python 3"})
 
 @app.route('/gears/helical', methods=['POST'])
 def helicoidal_gears_module():
@@ -26,7 +27,7 @@ def helicoidal_gears_module():
 	# gear = [content["body"]["teeth"],content["body"]["mateial"],content["body"]["rev"],content["body"]["Mt"],content["body"]["degree"],content["body"]["precision"],content["body"]["security"]]	
 	# module = gears_module_calculator.predict(pd.DataFrame([gear]))
 	# result = json.dumps({"data": round(module[0],2)})
-	return json.dumps({"data": 3})
+	return json.dumps({"data": round(random.uniform(0.1, 100), 2)})
 
 @app.route('/gears', methods=['POST'])
 def gears_module():
@@ -36,7 +37,7 @@ def gears_module():
   # gear = [content["body"]["teeth"],content["body"]["mateial"],content["body"]["rev"],content["body"]["Mt"],content["body"]["precision"],content["body"]["security"]]  
   # module = normal_gears_module_calculator.predict(pd.DataFrame([gear]))
   # result = json.dumps({"data": round(module[0],2)})
-  return json.dumps({"data": 3.5})
+  return json.dumps({"data": round(random.uniform(0.1, 100), 2)})
 
 @app.route('/axis', methods=['POST'])
 def axis():
@@ -46,7 +47,7 @@ def axis():
   # axi = [content["body"]["sut"],content["body"]["bhm"],content["body"]["Tm"],content["body"]["Mt"],content["body"]["ny"]]  
   # module = dMin_ejes.predict(pd.DataFrame([axi]))
   # result = json.dumps({"data": round(module[0],2)})
-  return json.dumps({"data": 100})
+  return json.dumps({"data": round(random.uniform(6, 500), 2)})
 
 @app.route('/key/lmin', methods=['POST'])
 def key_lmin():
@@ -56,7 +57,7 @@ def key_lmin():
   # key = [content["body"]["axi_dim"],content["body"]["sy"],content["body"]["ny"],content["body"]["Tm"]]  
   # module = Lmin_chavetas.predict(pd.DataFrame([key]))
   # result = json.dumps({"data": round(module[0],2)})
-  return json.dumps({"data": 2})
+  return json.dumps({"data": round(random.uniform(1, 100), 2)})
 
 @app.route('/key/ny', methods=['POST'])
 def key_ny():
@@ -66,7 +67,7 @@ def key_ny():
   # key = [content["body"]["axi_dim"],content["body"]["sut"],content["body"]["bhm"],content["body"]["Mt"],content["body"]["Tm"]]  
   # module = ny_chavetas.predict(pd.DataFrame([key]))
   # result = json.dumps({"data": round(module[0],2)})
-  return json.dumps({"data": 1.5})
+  return json.dumps({"data": round(random.uniform(0.1, 5), 2)})
 
 @app.route('/picket', methods=['POST'])
 def picket():
@@ -76,7 +77,7 @@ def picket():
   # picket = [content["body"]["axi_dim"],content["body"]["sut"],content["body"]["bhm"],content["body"]["Mt"],content["body"]["Tm"]]  
   # module = ny_reten.predict(pd.DataFrame([picket]))
   # result = json.dumps({"data": round(module[0],2)})
-  return json.dumps({"data": 2})
+  return json.dumps({"data": round(random.uniform(0.1, 5), 2)})
 
 @app.route('/forces', methods=['POST'])
 def forces():
